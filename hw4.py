@@ -14,7 +14,7 @@ def top_students(students_to_grades, n_students = 3):
     :return: (list) top students
     """
     return sorted(students_to_grades, key=students_to_grades.get,
-                  reverse= True)[:n_students]
+                  reverse = True)[:n_students]
 
 def extra_credit(students_to_grades, extra_credit = 1):
     """
@@ -24,7 +24,7 @@ def extra_credit(students_to_grades, extra_credit = 1):
     :return: (dictionary) updated dictionary of students to grade
     with extra credit
     """
-    return {student:students_to_grades.get(student)+extra_credit
+    return {student:students_to_grades.get(student) + extra_credit
             for student in students_to_grades}
 
 def adjusted_grade(to_iClicker, to_midterm):
@@ -35,17 +35,14 @@ def adjusted_grade(to_iClicker, to_midterm):
     :return: (dictionary) student names to updated grade. Adding one
     point of iclicker grade >= average
     """
-    average_iClicker = sum(to_iClicker.values())/ \
-                       len(to_iClicker) if len(to_iClicker) \
-                        else 1
+    average_iClicker = sum(to_iClicker.values()) / len(to_iClicker) \
+                       if len(to_iClicker) else 1
     with_midterm = {student: to_midterm[student]+1 if student in
-                    to_iClicker and to_iClicker[student] >=
-                    average_iClicker else to_midterm[student] for
-                    student in to_midterm}
+                    to_iClicker and to_iClicker[student] >= average_iClicker
+                    else to_midterm[student] for student in to_midterm}
     with_just_iClicker = {student: 1 if to_iClicker[student] >=
-                          average_iClicker else 0 for student in
-                          to_iClicker}
-    return {**with_just_iClicker,**with_midterm}
+                          average_iClicker else 0 for student in to_iClicker}
+    return {**with_just_iClicker, **with_midterm}
 
 def sum_of_inverse_odd(number):
     """
@@ -53,7 +50,7 @@ def sum_of_inverse_odd(number):
     :param number: (number) roof for odd numbers
     :return: (number) sum of inverse of odd numbers
     """
-    return sum(1/x for x in range(1,number+1,2))
+    return sum(1 / x for x in range(1, number + 1, 2))
 
 def same_length(*strings):
     """
@@ -80,29 +77,29 @@ def main():
     print(top_students(cs122))
     print(top_students(cs122, 10))
     print(top_students(empty_set, 6))
-    print(cs122)
+    print(cs122, '\n')
     # Test extra_credit
     print(extra_credit(cs122))
     print(extra_credit(cs122, 2))
     print(cs122)
-    print(extra_credit(empty_set, 5))
+    print(extra_credit(empty_set, 5), '\n')
     # Test adjusted_grade
     print(adjusted_grade(iclicker, exam))
     print(adjusted_grade(empty_set, exam))
     print(adjusted_grade(iclicker, empty_set))
-    print(adjusted_grade(empty_set, empty_set))
+    print(adjusted_grade(empty_set, empty_set), '\n')
     # Test sum_of_inverse_odd
     print(sum_of_inverse_odd(0))
     print(sum_of_inverse_odd(1))
     print(sum_of_inverse_odd(2))
     print(sum_of_inverse_odd(3))
-    print(sum_of_inverse_odd(2000))
+    print(sum_of_inverse_odd(2000), '\n')
     # Test same_length
     print(same_length())
     print(same_length('hi', 'ha', 'it', 'quiet'))
     print(same_length('hi', 'ha', 'it'))
     print(same_length('hello', 'ha', 'it', 'ok'))
-    print(same_length('Spartan'))
+    print(same_length('Spartan'), '\n')
 
 if __name__ == "__main__":
     main()
