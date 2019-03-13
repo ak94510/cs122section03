@@ -12,7 +12,7 @@ sum_of_inverse_odd and same_length functions in hw4.
 """
 
 import unittest
-import hw4_dictionary as hw4
+import homework4 as hw4
 
 class TestQ1(unittest.TestCase):
     """
@@ -40,7 +40,7 @@ class TestQ1(unittest.TestCase):
                          {'Zoe': 90, 'Alex': 93, 'Dan': 79, 'Anna': 100})
 
     def test_top_students_10(self):
-        """Test the top_students function with n-10."""
+        """Test the top_students function with n=10."""
         self.assertEqual(hw4.top_students(self.cs122, 10),
                          ['Anna', 'Alex', 'Zoe', 'Dan'])
         self.assertEqual(self.cs122,
@@ -134,19 +134,19 @@ class TestQ4(unittest.TestCase):
         self.assertEqual(hw4.sum_of_inverse_odd(0), 0)
 
     def test_sum_of_inverse_odd_1(self):
-        """Test the sum_of_inverse_odd function with n = 0."""
+        """Test the sum_of_inverse_odd function with n = 1."""
         self.assertEqual(hw4.sum_of_inverse_odd(1), 1.0)
 
     def test_sum_of_inverse_odd_2(self):
-        """Test the sum_of_inverse_odd function with n = 0."""
+        """Test the sum_of_inverse_odd function with n = 2."""
         self.assertEqual(hw4.sum_of_inverse_odd(2), 1.0)
 
     def test_sum_of_inverse_odd_3(self):
-        """Test the sum_of_inverse_odd function with n = 0."""
+        """Test the sum_of_inverse_odd function with n = 3."""
         self.assertAlmostEqual(hw4.sum_of_inverse_odd(3), 1.333333333333)
 
-    def test_sum_of_inverse_odd_0(self):
-        """Test the sum_of_inverse_odd function with n = 0."""
+    def test_sum_of_inverse_odd_2000(self):
+        """Test the sum_of_inverse_odd function with n = 2000."""
         self.assertAlmostEqual(hw4.sum_of_inverse_odd(2000),
                                           4.435632673335106)
 
@@ -174,6 +174,12 @@ class TestQ5(unittest.TestCase):
     def test_same_length_4_not_same_2(self):
         """Test the same_length with 4 different length arguments."""
         self.assertFalse(hw4.same_length('hello', 'ha', 'it', 'ok'))
+    def test_same_length_empty_strings_1(self):
+        """Test the same_length with empty strings"""
+        self.assertTrue(hw4.same_length('','',''))
+    def test_same_length_emtpy_strings_2(self):
+        """Test the same length with 1 non empty string"""
+        self.assertFalse(hw4.same_length('','a',''))
 
 if __name__ == '__main__':
     unittest.main()
